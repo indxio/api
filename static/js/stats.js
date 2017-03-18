@@ -40,7 +40,7 @@ var updateTicker = function(){
       if(ts === null){
         ts = result[pair][1].split('T');
         var tm = ts[1].split('.');
-        $('#subhead').text('Last Update: '+ts[0]+' | '+tm[0]);
+        $('#subhead').text('Last Update: '+ts[0]+' | '+tm[0]+' (GMT)');
       }
       if(pair != 'doge_btc'){$('#tickerul').append('<li class="tickerli"><a href="#">'+pair+' : <br>'+result[pair][0].toPrecision(7)+'</a></li>');}
     }
