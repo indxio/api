@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="indxio [INFO] api and documentation">
+    <meta name="author" content="sNoMoFoMo">
+    <title>indxio[INFO] | Volume weighted averages for #bitcoin, #litecoin and #ethereum. $BTC $LTC $ETH</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="css/sitemain.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/"><img src="img/logo_400x400.png" width="16px" class="img-responsive pull-left">&nbsp;indxio</a>
+            </div>
+            <!-- Top Menu Items -->
+            <ul class="nav navbar-right top-nav hidden-sm hidden-xs" id="tickerul">
+
+            </ul>
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                  <li class="active"><a href="/" id="infolink" title="indxio Stats and API">INFO</a></li>
+                  <li class=""><a href="/node.html" title="indxio Full Node Stats">NODE</a></li>
+                  <li class=""><a href="/mine.html" title="indxio Mining Stats">MINE</a></li>
+                  <li class=""><a href="http://wtfisbtc.com" target="_blank" >WTF</a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+
+        <div id="page-wrapper">
+
+            <div class="container-fluid">
+
+                <div class="row" id="infostats">
+                    <div class="col-lg-12">
+                        <h1 class="page-header"><small id="subhead">Currently Tracking</small></h1>
+                        <div class="row">
+                          <div class="col-sm-12 col-md-6 col-lg-3 statsdiv" id="srcsstats">
+                            <h2 class="text-center"><small><span id="srcscount">X</span> Sources</small></h2>
+                            <ul id="srcsul" style="list-style-type:none;"></ul>
+                          </div>
+                          <div class="col-sm-12 col-md-6 col-lg-3 statsdiv" id="basesstats">
+                            <h2 class="text-center"><small><span id="basescount">X</span> Base Currencies</small></h2>
+                            <ul id="basesul" class="text-center" style="list-style-type:none;"></ul>
+                          </div>
+                          <div class="col-sm-12 col-md-6 col-lg-3 statsdiv" id="coinsstats">
+                            <h2 class="text-center"><small><span id="coinscount">X</span> Coins</small></h2>
+                            <ul id="coinsul" class="text-center" style="list-style-type:none;"></ul>
+                          </div>
+                          <div class="col-sm-12 col-md-6 col-lg-3 statsdiv" id="pairsstats">
+                            <h2 class="text-center"><small><span id="pairscount">X</span> Pairs</small></h2>
+                            <ul id="pairsul" class="text-center" style="list-style-type:none;"></ul>
+                          </div>
+
+                        </div>
+                        <hr>
+                        <ol class="breadcrumb"></ol>
+                    </div>
+                </div>
+
+                <div class="row" id="infoapi">
+                  <div class="col-lg-12">
+                    <h1 class="page-header"><small id="subhead">API Docs</small></h1>
+
+                    <hr>
+                    <ol class="breadcrumb"></ol>
+                  </div>
+                </div>
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="js/stats.js"></script>
+</body>
+
+</html>
