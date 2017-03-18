@@ -53,7 +53,7 @@
 
               <div class="row" id="infostats">
                   <div class="col-lg-12">
-                      <h1 class="page-header"><small id="subhead">Mining Op Stats</small></h1>
+                      <h1 class="page-header"><small id="subhead">Mining Op Stats [<a href="https://slushpool.com/" target="_blank">slushpool</a>]</small></h1>
                       <div class="row">
                         <div class="col-lg-12">
                           <div class="col-lg-6">Total Hashrate</div>
@@ -100,7 +100,8 @@
       setInterval(function(){
         $.getJSON('/api/fn',function(result){
           for(var miner in result){
-            $('#'+miner).text(result[miner]);
+            var ghs = result[miner]/1000;
+            $('#'+miner).text(ghs+' Gh/s');
           }
         });
       },180000);
