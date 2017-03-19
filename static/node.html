@@ -53,11 +53,59 @@
 
             <div class="container-fluid">
 
-                <div class="row" id="infostats">
+                <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header"><small id="subhead">Full Node Stats</small></h1>
+                        <h1 class="page-header"><small id="subhead">Full Node | <span id="upt"><em>data loading...</em></span></small></h1>
+                        <div class="row panel-group">
+                          <div class="col-sm-12 col-md-6">
+                            <div class="panel panel-info">
+                              <div class="panel-heading">Address: 173.216.76.244:8333</div>
+                              <div class="">
+                                <div class="table-responsive">
+                                  <table class="table">
+                                    <tbody id="node">
+
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                              <div class="panel-footer">Donate: 1CkXgBUELi3j6VuL7KhSPvafaP55rx4dgt</div>
+                            </div>
+                          </div>
+                          <div class="col-sm-12 col-md-6">
+                            <div class="panel panel-info">
+                              <div class="panel-heading">Memory</div>
+                              <div class="">
+                                <div class="table-responsive">
+                                  <table class="table">
+                                    <tbody id="mem">
+
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                              <div class="panel-footer"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <hr>
                         <div class="row">
-                          <img class="img-responsive" src="img/soon.gif">
+                          <h1 class="page-header"><small id="subhead">Network <span id="netdata"><em>data loading...</em></span></small></h1>
+                          <div class="col-sm-12">
+                            <div class="panel panel-info">
+                              <div class="panel-heading">Total Nodes: <span id="node_total">...</span></div>
+                              <div class="">
+                                <div class="table-responsive">
+                                  <table class="table">
+                                    <tbody id="network">
+                                        More<img class="img-responsive" src="img/soon.gif">
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                              <div class="panel-footer"></div>
+                            </div>
+                          </div>
                         </div>
                         <hr>
                         <ol class="breadcrumb"><li>Additional Node Stats from <a href="https://bitnodes.21.co" target="_blank">21.co</a></li></ol>
@@ -74,6 +122,35 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script>
+    $.getJSON('/api/node',function(resp){
+      for(var id in resp){
+        var tid = id.split('_');
+        if(tid[0] === 'upt'){$('#'+tid[0]).text('Uptime: '+resp[id]);}else{
+          $('#'+tid[0]).append('<tr class="nodestats"><td>'+tid[1]+'</td><td>'+resp[id]+'</td></tr>');
+        }
+      }
+    });
+    $.getJSON('https://bitnodes.21.co/api/v1/nodes/leaderboard/',function(resp){
+      $('#netdata').text('');
+      $('#node_total').text(resp.count);
+    });
+      setInterval(function(){
+        $('.nodestats').remove();
+        $.getJSON('/api/node',function(resp){
+          for(var id in resp){
+            var tid = id.split('_');
+            if(tid[0] === 'upt'){$('#'+tid[0]).text('Uptime: '+resp[id]);}else{
+              $('#'+tid[0]).append('<tr class="nodestats"><td>'+tid[1]+'</td><td>'+resp[id]+'</td></tr>');
+            }
+          }
+        });
+        $.getJSON('https://bitnodes.21.co/api/v1/nodes/leaderboard/',function(resp){
+          $('#netdata').text('');
+          $('#node_total').text(resp.count);
+        });
+      },5 * 60 * 1000);
+    </script>
 </body>
 
 </html>

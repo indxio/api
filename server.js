@@ -137,6 +137,11 @@ app.get('/api/fn',function(req,res){
     }
   });
 });
+app.get('/api/node', function(req,res){
+  getJSON('http://173.216.76.244:3000',function(err,resp){
+    res.json(resp);
+  });
+});
 
 app.listen(port,function(){
   console.log("indxio API server running on Port "+port);
