@@ -138,10 +138,13 @@ app.get('/api/fn',function(req,res){
     }
   });
 });
+var nodeout = {};
+getJSON('http://173.216.76.244:3000',function(err,resp){nodeout = resp;});
+setInterval(function(){
+  getJSON('http://173.216.76.244:3000',function(err,resp){nodeout = resp;});
+}, 5 * 60 * 1000);
 app.get('/api/node', function(req,res){
-  getJSON('http://173.216.76.244:3000',function(err,resp){
-    res.json(resp);
-  });
+  res.json(nodeout);
 });
 
 app.listen(port,function(){
