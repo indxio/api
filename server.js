@@ -7,7 +7,7 @@ var app  = express();
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
 //var port = 3000;
-//var port = 80;
+var port = 80;
 var srcs = require('./srcs');
 var creds = require('./creds');
 var pool  = mysql.createPool({
