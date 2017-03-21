@@ -138,14 +138,14 @@ app.get('/api/fn',function(req,res){
     }
   });
 });
-var nodeout = {};
-getJSON('http://173.216.76.244:3000',function(err,resp){if(resp.node_connections > 0) {nodeout = resp;}});
-setInterval(function(){
-  getJSON('http://173.216.76.244:3000',function(err,resp){if(resp.node_connections > 0) {nodeout = resp;}});
-}, 5 * 60 * 1000);
-app.get('/api/node', function(req,res){
-  res.json(nodeout);
-});
+// var nodeout = {};
+// getJSON('http://173.216.76.244:3000',function(err,resp){if(resp.node_connections && resp.node_connections > 0) {nodeout = resp;}});
+// setInterval(function(){
+//   getJSON('http://173.216.76.244:3000',function(err,resp){if(resp.node_connections && resp.node_connections > 0) {nodeout = resp;}});
+// }, 5 * 60 * 1000);
+// app.get('/api/node', function(req,res){
+//   res.json(nodeout);
+// });
 
 app.listen(port,function(){
   console.log("indxio API server running on Port "+port);
