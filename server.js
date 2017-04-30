@@ -6,8 +6,8 @@ var getJSON = require('get-json');
 var app  = express();
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
-//var port = 3000;
-var port = 80;
+//var port = 80;
+var port = 8001;
 var srcs = require('./srcs');
 var creds = require('./creds');
 var pool  = mysql.createPool({
@@ -126,26 +126,9 @@ app.get('/api/srcs/:src?/:pair?',function(req,res){
 
 });
 
-app.get('/api/fn',function(req,res){
-  getJSON('https://slushpool.com/accounts/profile/json/1309775-9dbd582320902aea943fc30f8b10ce33',function(err,resp){
-    if(err){res.json({'err':err});}else{
-      res.json({
-        'hashrate': resp.hashrate,
-        'u3': resp.workers["internaut.U3a"].hashrate,
-        's3': resp.workers["internaut.S3a"].hashrate,
-        'r1': resp.workers["internaut.RantM1ner"].hashrate,
-      });
-    }
-  });
+app.get('/api',function(req,res){
+  res.json({'options': ['stats','indx','srcs']});
 });
-// var nodeout = {};
-// getJSON('http://173.216.76.244:3000',function(err,resp){if(resp.node_connections && resp.node_connections > 0) {nodeout = resp;}});
-// setInterval(function(){
-//   getJSON('http://173.216.76.244:3000',function(err,resp){if(resp.node_connections && resp.node_connections > 0) {nodeout = resp;}});
-// }, 5 * 60 * 1000);
-// app.get('/api/node', function(req,res){
-//   res.json(nodeout);
-// });
 
 app.listen(port,function(){
   console.log("indxio API server running on Port "+port);
