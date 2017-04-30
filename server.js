@@ -1,3 +1,10 @@
+var fs = require('fs');
+var http = require('http');
+var https = require('https');
+var privateKey  = fs.readFileSync('/etc/letsencrypt/live/indxio.info/privkey.pem', 'utf8');
+var certificate = fs.readFileSync('/etc/letsencrypt/live/indxio.info/fullchain.pem', 'utf8');
+var credentials = {key: privateKey, cert: certificate};
+
 var express = require("express");
 var bodyParser  = require("body-parser");
 var md5 = require('md5');
@@ -130,6 +137,12 @@ app.get('/api',function(req,res){
   res.json({'options': ['stats','indx','srcs']});
 });
 
-app.listen(port,function(){
-  console.log("indxio API server running on Port "+port);
-});
+var httpServer = http.createServer(app);
+var httpsServer = https.createServer(credentials, app);
+
+httpServer.listen(80);
+httpsServer.listen(443);
+
+// app.listen(port,function(){
+//   console.log("indxio API server running on Port "+port);
+// });
