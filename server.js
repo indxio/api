@@ -6,8 +6,8 @@ var getJSON = require('get-json');
 var app  = express();
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
-//var port = 80;
-var port = 8001;
+var port = 80;
+//var port = 8001;
 var srcs = require('./srcs');
 var creds = require('./creds');
 var pool  = mysql.createPool({
